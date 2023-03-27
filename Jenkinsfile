@@ -2,10 +2,17 @@
 pipeline {
 	// agent { docker { image 'maven:3.9.0' } }
 	agent any
+	environment {
+		mavenHome = tool 'myMaven'
+		dockerHome = tool 'myDocker'
+		PATH = "$mavenHome/bin:$dockerHome/bin:$PATH"
+	}
+	
 	stages {
 		stage('Build') {
 			steps {
-				//sh 'mvn --version'
+				sh 'mvn --version'
+				sh 'docker version'
 				echo "Build"
 				echo "Build number - $env.BUILD_NUMBER"
 				echo "Job name - $env.JOB_NAME"
@@ -25,6 +32,7 @@ pipeline {
 			}
 		}
 	}
+	
 	post {
 		always {
 			echo "this action execute always"
