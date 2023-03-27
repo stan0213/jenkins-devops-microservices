@@ -57,9 +57,11 @@ pipeline {
 		stage('Push Docker Image') {
 			steps {
 				script {
-					docker.withRegistry('', 'dockerHub')
-					dockerImage.push();
-					dockerImage.push('latest');
+					echo "setup credentials ..."
+					docker.withRegistry('', 'dockerHub') {
+						dockerImage.push();
+						//dockerImage.push('latest');
+					}
 				}
 			}
 		}
