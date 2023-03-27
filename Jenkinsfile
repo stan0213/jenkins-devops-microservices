@@ -50,6 +50,7 @@ pipeline {
 			steps {
 				script {
 					dockerImage = docker.build("standockertest/currency-exchange-devops:${env.BUILD_TAG}")
+				}
 			}
 		}
 
