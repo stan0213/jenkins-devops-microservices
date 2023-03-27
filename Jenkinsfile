@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh 'mvn --version'
+				//sh 'mvn --version'
 				echo "Build"
 				echo "Build number - $env.BUILD_NUMBER"
 				echo "Job name - $env.JOB_NAME"
